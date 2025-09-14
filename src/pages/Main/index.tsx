@@ -1,3 +1,5 @@
+import { TeaserList } from '@modules/TeaserList';
+
 export default function MainPage() {
-  return <div>MainPage</div>;
+  return <TeaserList />;
 }

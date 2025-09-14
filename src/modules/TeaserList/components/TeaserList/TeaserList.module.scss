@@ -1,0 +1,13 @@
+.list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+  flex-direction: column;
+  padding: 40px 0;
+}
+
+.title {
+  font-size: 36px;
+}
