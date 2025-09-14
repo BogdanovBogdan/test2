@@ -1,0 +1,8 @@
+import type { formatISODateProps } from './types';
+
+const formatISODate = ({ ISODate, options }: formatISODateProps): string => {
+  const formatter = new Intl.DateTimeFormat('en-US', options);
+  return formatter.format(new Date(ISODate));
+};
+
+export { formatISODate };
