@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 type UseIntersectionObserver = {
   onIntersection: () => void;
@@ -7,29 +7,38 @@ type UseIntersectionObserver = {
 const useIntersectionObserver = ({
   onIntersection,
 }: UseIntersectionObserver) => {
-  const observerRef = useCallback(
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  const nodeRef = useCallback(
     (element: HTMLDivElement | null) => {
       if (!element) return;
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting) {
-            onIntersection();
+      if (!observerRef.current) {
+        observerRef.current = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) onIntersection();
           }
-        },
-        { root: null, rootMargin: '200px', threshold: 0 }
-      );
+        });
+      }
 
-      if (element) observer.observe(element);
+      if (element) observerRef.current.observe(element);
 
       return () => {
-        if (element) observer.unobserve(element);
+        if (observerRef.current && element) {
+          observerRef.current.unobserve(element);
+        }
       };
     },
     [onIntersection]
   );
 
-  return { observerRef };
+  useEffect(() => {
+    return () => {
+      if (observerRef.current) observerRef.current.disconnect();
+    };
+  }, []);
+
+  return { nodeRef };
 };
 
 export { useIntersectionObserver };

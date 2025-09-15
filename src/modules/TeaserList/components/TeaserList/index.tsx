@@ -5,7 +5,7 @@ import useTeaserList from '@modules/TeaserList/hooks/useTeaserList';
 
 export default function TeaserList() {
   const { teasers, isLoading, error, hasMorePages, nextPage } = useTeaserList();
-  const { observerRef } = useIntersectionObserver({
+  const { nodeRef } = useIntersectionObserver({
     onIntersection: nextPage,
   });
 
@@ -20,7 +20,7 @@ export default function TeaserList() {
         <TeaserCard key={item.id} {...item} />
       ))}
       {hasMorePages && !isLoading && (
-        <div ref={observerRef} style={{ height: 1 }} />
+        <div ref={nodeRef} style={{ height: 1 }} />
       )}
       {isLoading && <div>Loading...</div>}
     </section>
