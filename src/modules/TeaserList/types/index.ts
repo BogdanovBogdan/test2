@@ -12,4 +12,10 @@ type TeaserListMeta = {
   itemsPerPage: number;
 };
 
-export type { TeaserItem, TeaserListMeta };
+type TeaserListResponse = {
+  data: TeaserItem[];
+  meta: TeaserListMeta;
+};
+
+
+export type { TeaserItem, TeaserListMeta, TeaserListResponse };
