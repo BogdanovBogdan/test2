@@ -4,16 +4,17 @@
   display: grid;
   padding: 20px 30px;
   background-color: #ededed;
-  border-radius: 15px;
+  border-radius: 10px;
   max-width: 500px;
   width: 100%;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .image {
   width: 100%;
   height: auto;
-  border-radius: inherit;
+  border-radius: 6px;
 }
 
 .date {
