@@ -6,10 +6,4 @@ type TeaserItem = {
   imgUrl: string | null;
 };
 
-type TeaserListMeta = {
-  count: number;
-  currentPage: number;
-  itemsPerPage: number;
-};
-
-export type { TeaserItem, TeaserListMeta };
+export type { TeaserItem };

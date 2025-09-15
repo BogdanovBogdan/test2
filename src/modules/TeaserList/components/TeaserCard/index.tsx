@@ -20,8 +20,10 @@ const TeaserCard = memo(({ date, title, message, imgUrl }: TeaserItem) => {
     <article className={styles.card}>
       {imgUrl && <Image src={imgUrl} alt={title} className={styles.image} />}
       <div>
-        <time className={styles.date}>{formattedDate}</time>
-        <h3 className={styles.title}>{title}</h3>
+        <time dateTime={date} className={styles.date}>
+          {formattedDate}
+        </time>
+        <h2 className={styles.title}>{title}</h2>
         <p className={styles.message}>{message}</p>
       </div>
     </article>

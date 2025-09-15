@@ -29,6 +29,7 @@ const Image = ({ className, onLoad, onError, ...rest }: ImageProps) => {
       className={classNameImage}
       onLoad={handleLoad}
       onError={handleError}
+      loading='lazy'
       {...rest}
     />
   );

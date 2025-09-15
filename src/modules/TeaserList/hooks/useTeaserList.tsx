@@ -1,13 +1,25 @@
 import { useTeaserListStore } from '@modules/TeaserList/store';
-import type { TeaserItem, TeaserListMeta } from '@modules/TeaserList/types';
+import type { TeaserItem } from '@modules/TeaserList/types';
 import { useEffect, useState } from 'react';
+
+type TeaserListMeta = {
+  count: number;
+  currentPage: number;
+  itemsPerPage: number;
+};
 
 type TeaserListResponse = {
   data: TeaserItem[];
   meta: TeaserListMeta;
 };
 
-export default function useTeaserList() {
+type UseTeaserListProps = {
+  itemsPerPage?: number;
+};
+
+export default function useTeaserList({
+  itemsPerPage = 10,
+}: UseTeaserListProps = {}) {
   const {
     teasers,
     page,
@@ -29,7 +41,7 @@ export default function useTeaserList() {
 
       try {
         const response = await fetch(
-          `https://api-test.rtbpanda.tech/list?page=${page}&pageSize=10`,
+          `https://api-test.rtbpanda.tech/list?page=${page}&pageSize=${itemsPerPage}`,
           { signal: abortController.signal }
         );
 
@@ -37,10 +49,9 @@ export default function useTeaserList() {
           throw new Error(response.statusText);
         }
 
-        const data: TeaserListResponse = await response.json();
-        const hasMorePages =
-          data.meta.currentPage * data.meta.itemsPerPage < data.meta.count;
-        setTeasers([...teasers, ...data.data]);
+        const { data, meta }: TeaserListResponse = await response.json();
+        const hasMorePages = meta.currentPage * meta.itemsPerPage < meta.count;
+        setTeasers([...teasers, ...data]);
         setHasMorePages(hasMorePages);
       } catch (error) {
         if ((error as Error).name !== 'AbortError') {
@@ -56,10 +67,14 @@ export default function useTeaserList() {
     return () => {
       abortController.abort();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
   useEffect(() => {
-    resetTeasers();
+    return () => {
+      resetTeasers();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
