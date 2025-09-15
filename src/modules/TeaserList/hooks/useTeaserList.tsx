@@ -1,10 +1,22 @@
-import { useCallback, useEffect, useState } from 'react';
-import type { TeaserItem, TeaserListResponse } from '../types';
+import { useEffect, useState } from 'react';
+import { useTeaserListStore } from '../store';
+import type { TeaserItem, TeaserListMeta } from '../types';
+
+type TeaserListResponse = {
+  data: TeaserItem[];
+  meta: TeaserListMeta;
+};
 
 export default function useTeaserList() {
-  const [teasers, setTeasers] = useState<TeaserItem[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMorePages, setHasMorePages] = useState(false);
+  const {
+    teasers,
+    page,
+    hasMorePages,
+    setTeasers,
+    resetTeasers,
+    nextPage,
+    setHasMorePages,
+  } = useTeaserListStore();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -28,7 +40,7 @@ export default function useTeaserList() {
         const data: TeaserListResponse = await response.json();
         const hasMorePages =
           data.meta.currentPage * data.meta.itemsPerPage < data.meta.count;
-        setTeasers((prev) => [...prev, ...data.data]);
+        setTeasers([...teasers, ...data.data]);
         setHasMorePages(hasMorePages);
       } catch (error) {
         if ((error as Error).name !== 'AbortError') {
@@ -46,8 +58,8 @@ export default function useTeaserList() {
     };
   }, [page]);
 
-  const nextPage = useCallback(() => {
-    setPage((prev) => prev + 1);
+  useEffect(() => {
+    resetTeasers();
   }, []);
 
   return {
