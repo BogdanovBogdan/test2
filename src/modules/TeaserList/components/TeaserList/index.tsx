@@ -1,3 +1,4 @@
+import { Spinner } from '@/UI';
 import { TeaserCard } from '@modules/TeaserList/components/TeaserCard';
 import styles from '@modules/TeaserList/components/TeaserList/TeaserList.module.scss';
 import useTeaserList from '@modules/TeaserList/hooks/useTeaserList';
@@ -6,7 +7,7 @@ import { Virtuoso } from 'react-virtuoso';
 export default function TeaserList() {
   const { teasers, isLoading, error, hasMorePages, nextPage } = useTeaserList();
 
-  if (isLoading && !teasers.length) return <div>Loading...</div>;
+  if (isLoading && !teasers.length) return <Spinner fullScreen />;
   if (error) return <div>Error: {error.message || 'Unknown error'}</div>;
   if (!teasers.length) return <div>No data</div>;
 
