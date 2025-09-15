@@ -1,8 +1,9 @@
 import { formatISODate } from '@/utilities';
 import styles from '@modules/TeaserList/components/TeaserCard/TeaserCard.module.scss';
 import type { TeaserItem } from '@modules/TeaserList/types';
+import { memo } from 'react';
 
-const TeaserCard = ({ date, title, message, imgUrl }: TeaserItem) => {
+const TeaserCard = memo(({ date, title, message, imgUrl }: TeaserItem) => {
   const formattedDate = formatISODate({
     ISODate: date,
     options: {
@@ -24,6 +25,6 @@ const TeaserCard = ({ date, title, message, imgUrl }: TeaserItem) => {
       </div>
     </article>
   );
-};
+});
 
 export { TeaserCard };
