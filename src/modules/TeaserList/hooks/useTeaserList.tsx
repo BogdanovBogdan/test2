@@ -29,7 +29,7 @@ export default function useTeaserList({
     nextPage,
     setHasMorePages,
   } = useTeaserListStore();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
@@ -58,11 +58,13 @@ export default function useTeaserList({
           setError(error as Error);
         }
       } finally {
-        setIsLoading(false);
+        if (!abortController.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
-    if (!isLoading) fetchData();
+    fetchData();
 
     return () => {
       abortController.abort();
