@@ -1,6 +1,6 @@
+import { useTeaserListStore } from '@modules/TeaserList/store';
+import type { TeaserItem, TeaserListMeta } from '@modules/TeaserList/types';
 import { useEffect, useState } from 'react';
-import { useTeaserListStore } from '../store';
-import type { TeaserItem, TeaserListMeta } from '../types';
 
 type TeaserListResponse = {
   data: TeaserItem[];

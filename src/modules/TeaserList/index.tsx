@@ -1,3 +1,3 @@
-import TeaserList from './components/TeaserList';
+import TeaserList from '@modules/TeaserList/components/TeaserList';
 
 export { TeaserList };

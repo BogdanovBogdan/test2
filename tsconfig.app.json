@@ -30,7 +30,8 @@
       "@modules/*": ["./src/modules/*"],
       "@pages/*": ["./src/pages/*"],
       "@styles/*": ["./src/styles/*"],
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@utilities/*": ["./src/utilities/*"]
     }
   },
   "include": ["src"]

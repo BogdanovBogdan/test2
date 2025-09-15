@@ -1,6 +1,6 @@
 import { formatISODate } from '@/utilities';
+import styles from '@modules/TeaserList/components/TeaserCard/TeaserCard.module.scss';
 import type { TeaserItem } from '@modules/TeaserList/types';
-import styles from './TeaserCard.module.scss';
 
 const TeaserCard = ({ date, title, message, imgUrl }: TeaserItem) => {
   const formattedDate = formatISODate({

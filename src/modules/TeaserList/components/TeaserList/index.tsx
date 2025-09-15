@@ -1,7 +1,7 @@
 import { useIntersectionObserver } from '@/hooks/useObserver';
-import useTeaserList from '../../hooks/useTeaserList';
-import { TeaserCard } from '../TeaserCard';
-import styles from './TeaserList.module.scss';
+import { TeaserCard } from '@modules/TeaserList/components/TeaserCard';
+import styles from '@modules/TeaserList/components/TeaserList/TeaserList.module.scss';
+import useTeaserList from '@modules/TeaserList/hooks/useTeaserList';
 
 export default function TeaserList() {
   const { teasers, isLoading, error, hasMorePages, nextPage } = useTeaserList();
