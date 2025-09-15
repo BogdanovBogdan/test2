@@ -11,3 +11,13 @@
 .title {
   font-size: 36px;
 }
+
+.virtuosoContainer {
+  width: 100%;
+}
+
+.virtuosoList {
+  display: grid;
+  gap: 20px;
+  justify-content: center;
+}
