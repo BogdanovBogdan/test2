@@ -27,7 +27,7 @@ const TeaserList = () => {
             </div>
           ),
           Footer: () => {
-            if (isLoading) return <div>Loading...</div>;
+            if (isLoading) return <Spinner size='small' />;
           },
         }}
       />
