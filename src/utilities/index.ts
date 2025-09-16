@@ -1,3 +1,3 @@
-import { formatISODate } from '@utilities/formatDate';
+import { formatISODate } from './formatDate';
 
 export { formatISODate };

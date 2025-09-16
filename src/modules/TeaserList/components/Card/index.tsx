@@ -1,8 +1,8 @@
-import { Image } from '@/UI';
+import { Image } from '@/ui';
 import { formatISODate } from '@/utilities';
-import styles from '@modules/TeaserList/components/TeaserCard/TeaserCard.module.scss';
-import type { TeaserItem } from '@modules/TeaserList/types';
 import { memo } from 'react';
+import type { TeaserItem } from '../../types';
+import styles from './TeaserCard.module.scss';
 
 const TeaserCard = memo(({ date, title, message, imgUrl }: TeaserItem) => {
   const formattedDate = formatISODate({

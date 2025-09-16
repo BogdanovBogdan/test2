@@ -1,5 +1,5 @@
-import type { TeaserItem } from '@modules/TeaserList/types';
 import { create } from 'zustand';
+import type { TeaserItem } from '../types';
 
 type TeaserListStore = {
   teasers: TeaserItem[];

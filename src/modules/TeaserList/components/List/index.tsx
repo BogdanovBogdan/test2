@@ -1,10 +1,10 @@
-import { Spinner } from '@/UI';
-import { TeaserCard } from '@modules/TeaserList/components/TeaserCard';
-import styles from '@modules/TeaserList/components/TeaserList/TeaserList.module.scss';
-import useTeaserList from '@modules/TeaserList/hooks/useTeaserList';
+import { Spinner } from '@/ui';
 import { Virtuoso } from 'react-virtuoso';
+import useTeaserList from '../../hooks/useTeaserList';
+import { TeaserCard } from '../Card';
+import styles from './TeaserList.module.scss';
 
-export default function TeaserList() {
+const TeaserList = () => {
   const { teasers, isLoading, error, hasMorePages, nextPage } = useTeaserList();
 
   if (isLoading && !teasers.length) return <Spinner fullScreen />;
@@ -33,4 +33,6 @@ export default function TeaserList() {
       />
     </section>
   );
-}
+};
+
+export { TeaserList };
