@@ -14,10 +14,11 @@
 
 .virtuosoContainer {
   width: 100%;
+  max-width: 1200px;
 }
 
-.virtuosoList {
-  display: grid;
-  gap: 20px;
+.virtuosoItem {
+  margin: 20px 10px 0;
+  display: flex;
   justify-content: center;
 }
