@@ -10,6 +10,7 @@ npm run dev
 ### Build режим
 
 ```bash
+npm install
 npm run build
 npm run preview
 ```
