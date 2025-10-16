@@ -1,1 +1,1 @@
-export { TeaserList } from './list';
+export { TeaserList } from './List';
