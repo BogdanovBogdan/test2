@@ -2,7 +2,7 @@ import { useIntersectionObserver, useWindowSize } from '@/hooks';
 import { Spinner } from '@/ui';
 import { VirtuosoMasonry } from '@virtuoso.dev/masonry';
 import useTeaserList from '../../hooks/useTeaserList';
-import { TeaserCard } from '../Card';
+import { TeaserCard } from '../card';
 import styles from './TeaserList.module.scss';
 
 const TeaserList = () => {

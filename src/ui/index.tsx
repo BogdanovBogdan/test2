@@ -1,2 +1,2 @@
-export { Image } from './Image';
-export { Spinner } from './Spinner';
+export { Image } from './image';
+export { Spinner } from './spinner';

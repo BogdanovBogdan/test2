@@ -1,1 +1,0 @@
-export { TeaserList } from './List';
