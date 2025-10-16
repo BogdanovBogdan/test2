@@ -17,9 +17,7 @@ type UseTeaserListProps = {
   itemsPerPage?: number;
 };
 
-export default function useTeaserList({
-  itemsPerPage = 10,
-}: UseTeaserListProps = {}) {
+function useTeaserList({ itemsPerPage = 10 }: UseTeaserListProps = {}) {
   const {
     teasers,
     page,
@@ -87,3 +85,5 @@ export default function useTeaserList({
     nextPage,
   };
 }
+
+export { useTeaserList };
