@@ -1,6 +1,3 @@
-@use '@styles/variables' as *;
-@use 'sass:color';
-
 .image {
   width: 100%;
   height: 100%;
@@ -11,9 +8,9 @@
 .imageLoading {
   background: linear-gradient(
     90deg,
-    color.scale($white, $lightness: -5%),
-    color.scale($white, $lightness: -15%),
-    color.scale($white, $lightness: -5%)
+    hsl(from var(--white) h s calc(l - 5%)),
+    hsl(from var(--white) h s calc(l - 15%)),
+    hsl(from var(--white) h s calc(l - 5%))
   );
   animation: shimmer 1.5s infinite;
   background-size: 200% 100%;
